@@ -55,3 +55,32 @@ minetest.register_tool("orienteering:gps", {
 })
 
 
+
+function update_automapper(player)
+	local inv = player:get_inventory()
+	if inv:contains_item("main", "orienteering:automapper") then
+		player:hud_set_flags({minimap = true})
+	else
+		player:hud_set_flags({minimap = false})
+	end
+end
+
+minetest.register_on_newplayer(function(player)
+	update_automapper(player)
+end)
+
+minetest.register_on_joinplayer(function(player)
+	update_automapper(player)
+end)
+
+local updatetimer = 0
+minetest.register_globalstep(function(dtime)
+	updatetimer = updatetimer + dtime
+	if updatetimer > 0.1 then
+		local players = minetest.get_connected_players()
+		for i=1, #players do
+			update_automapper(players[i])
+		end
+		updatetimer = updatetimer - dtime
+	end
+end)
