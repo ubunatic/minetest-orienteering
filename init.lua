@@ -34,6 +34,15 @@ minetest.register_tool("orienteering:watch", {
 	description = "Watch",
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
+	on_use = function(itemstack, user, pointed_thing)
+		local name = user:get_player_name()
+		if orienteering.playerhuds[name].twelve then
+			orienteering.playerhuds[name].twelve = false
+		else
+			orienteering.playerhuds[name].twelve = true
+		end
+		update_hud_displays(user)
+	end,
 })
 
 -- Displays speed
@@ -84,11 +93,14 @@ function init_hud(player)
 			scale= { x = 100, y = 20 },
 		})
 	end
+	orienteering.playerhuds[name].twelve = false
 end
 
 function update_hud_displays(player)
+	local name = player:get_player_name()
 	local inv = player:get_inventory()
 	local gps, altimeter, triangulator, compass, sextant, watch, speedometer
+
 	if inv:contains_item("main", "orienteering:gps") then
 		gps = true
 	end
@@ -140,7 +152,22 @@ function update_hud_displays(player)
 		local totalminutes = time * 1440
 		local hours = math.floor(totalminutes / 60)
 		local minutes = math.floor(math.fmod(totalminutes, 60))
-		str_time = string.format("Time: %02i:%02i", hours, minutes)
+		local twelve = orienteering.playerhuds[name].twelve
+		if twelve then
+			local ampm
+			if hours == 12 and minutes == 0 then
+				str_time = "Time: noon"
+			elseif hours == 0 and minutes == 0 then
+				str_time = "Time: midnight"
+			else
+				if hours >= 12 then ampm = "p.m." else ampm = "a.m." end
+				hours = math.fmod(hours, 12)
+				if hours == 0 then hours = 12 end
+				str_time = string.format("Time: %i:%02i %s", hours, minutes, ampm)
+			end
+		else
+			str_time = string.format("Time: %02i:%02i", hours, minutes)
+		end
 	else
 		str_time = ""
 	end
@@ -151,7 +178,6 @@ function update_hud_displays(player)
 		str_speed = ""
 	end
 
-	local name = player:get_player_name()
 	player:hud_change(orienteering.playerhuds[name].pos, "text", str_pos)
 	player:hud_change(orienteering.playerhuds[name].angles, "text", str_angles)
 	player:hud_change(orienteering.playerhuds[name].time, "text", str_time)
