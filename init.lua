@@ -130,7 +130,7 @@ function update_hud_displays(player)
 	elseif compass or gps then
 		str_angles = "Yaw: "..yaw
 	elseif sextant then
-		str_angles = "Pitch: "..yaw
+		str_angles = "Pitch: "..pitch
 	else
 		str_angles = ""
 	end
