@@ -1,5 +1,8 @@
 local orienteering = {}
 orienteering.playerhuds = {}
+orienteering.settings = {}
+orienteering.settings.speed_unit = "m/s"
+orienteering.settings.length_unit = "m"
 
 -- Displays height (Y)
 minetest.register_tool("orienteering:altimeter", {
@@ -172,8 +175,9 @@ function update_hud_displays(player)
 		str_time = ""
 	end
 
-	if speedometer or gps then
-		str_speed = ""
+	local speed = vector.length(player:get_player_velocity())
+	if speedometer then
+		str_speed = string.format("Velocity: %.2f %s", speed, orienteering.settings.speed_unit)
 	else
 		str_speed = ""
 	end
