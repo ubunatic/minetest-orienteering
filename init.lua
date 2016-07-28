@@ -18,14 +18,16 @@ minetest.register_tool("orienteering:triangulator", {
 	inventory_image = "orienteering_triangulator.png",
 })
 
--- Displays player yaw and can calculate yaw difference between 2 points
+-- Displays player yaw
+-- TODO: calculate yaw difference between 2 points
 minetest.register_tool("orienteering:compass", {
 	description = "Compass",
 	wield_image = "orienteering_compass_wield.png",
 	inventory_image = "orienteering_compass_inv.png",
 })
 
--- Displays player pitch and can calculate pitch difference between 2 points
+-- Displays player pitch
+-- TODO: calculate pitch difference between 2 points
 minetest.register_tool("orienteering:sextant", {
 	description = "Sextant",
 	wield_image = "orienteering_sextant_wield.png",
