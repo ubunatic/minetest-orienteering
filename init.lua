@@ -138,6 +138,14 @@ if minetest.get_modpath("default") ~= nil then
 		}
 	})
 	minetest.register_craft({
+		output = "orienteering:quadcorder",
+		recipe = {
+			{ "default:gold_ingot", "default:gold_ingot", "default:gold_ingot" },
+			{ "orienteering:speedometer", "default:diamond", "orienteering:automapper", },
+                        { "orienteering:sextant", "default:diamond", "orienteering:gps" }
+		}
+	})
+	minetest.register_craft({
 		output = "orienteering:watch",
 		recipe = {
 			{ "default:copper_ingot" },
