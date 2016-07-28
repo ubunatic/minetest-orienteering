@@ -152,7 +152,7 @@ end
 
 function update_automapper(player)
 	local inv = player:get_inventory()
-	if inv:contains_item("main", "orienteering:automapper") then
+	if inv:contains_item("main", "orienteering:automapper") or inv:contains_item("main", "orienteering:quadcorder") then
 		player:hud_set_flags({minimap = true})
 	else
 		player:hud_set_flags({minimap = false})
