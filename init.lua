@@ -138,11 +138,11 @@ function update_hud_displays(player)
 	local yaw = math.floor((player:get_look_yaw()-math.pi*0.5)/(2*math.pi)*360)
 	local pitch = math.floor(player:get_look_pitch()/math.pi*360)
 	if (compass or gps) and sextant then
-		str_angles = "Yaw: "..yaw..", pitch: "..pitch
+		str_angles = "Yaw: "..yaw.."°, pitch: "..pitch.."°"
 	elseif compass or gps then
-		str_angles = "Yaw: "..yaw
+		str_angles = "Yaw: "..yaw.."°"
 	elseif sextant then
-		str_angles = "Pitch: "..pitch
+		str_angles = "Pitch: "..pitch.."°"
 	else
 		str_angles = ""
 	end
