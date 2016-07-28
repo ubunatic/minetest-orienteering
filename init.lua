@@ -62,12 +62,79 @@ minetest.register_tool("orienteering:automapper", {
 	inventory_image = "orienteering_automapper_inv.png",
 })
 
--- Displays X,Y,Z coordinates, height, speed, yaw and game time
+-- Displays X,Y,Z coordinates, yaw and game time
 minetest.register_tool("orienteering:gps", {
 	description = "GPS device",
 	wield_image = "orienteering_gps_wield.png",
 	inventory_image = "orienteering_gps_inv.png",
 })
+
+if minetest.get_modpath("default") ~= nil then
+	-- Register crafts
+	minetest.register_craft({
+		output = "orienteering:altimeter",
+		recipe = {
+			{"default:copper_ingot"}, 
+			{"default:copper_ingot"}, 
+			{"default:copper_ingot"}, 
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:triangulator",
+		recipe = {
+			{"", "default:bronze_ingot", ""}, 
+			{"default:bronze_ingot", "", "default:bronze_ingot"}, 
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:sextant",
+		recipe = {
+			{"", "default:gold_ingot", ""}, 
+			{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"}, 
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:compass",
+		recipe = {
+			{"", "default:copper_ingot", ""}, 
+			{"default:copper_ingot", "group:stick", "default:copper_ingot"}, 
+			{"", "default:copper_ingot", ""}, 
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:speedometer",
+		recipe = {
+			{"", "default:steel_ingot", ""}, 
+			{"default:steel_ingot", "group:stick", "default:steel_ingot"}, 
+			{"", "default:steel_ingot", ""}, 
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:automapper",
+		recipe = {
+			{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"},
+			{"default:mese_crystal", "default:obsidian_shard", "default:mese_crystal"},
+			{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"}
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:gps",
+		recipe = {
+			{ "default:gold_ingot", "orienteering:triangulator", "default:gold_ingot" },
+			{ "orienteering:compass", "default:bronze_ingot", "orienteering:watch" },
+                        { "default:steel_ingot", "orienteering:altimeter", "default:steel_ingot" }
+		}
+	})
+	minetest.register_craft({
+		output = "orienteering:watch",
+		recipe = {
+			{ "default:copper_ingot" },
+			{ "default:glass" },
+			{ "default:copper_ingot" }
+		}
+	})
+
+end
 
 
 
