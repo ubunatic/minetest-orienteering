@@ -32,6 +32,14 @@ minetest.register_tool("orienteering:sextant", {
 	inventory_image = "orienteering_sextant_inv.png",
 })
 
+-- Ultimate orienteering tool: Displays X,Y,Z, yaw, pitch, time, speed and enables the minimap
+minetest.register_tool("orienteering:quadcorder", {
+	description = "Quadcorder",
+	wield_image = "orienteering_quadcorder.png",
+	wield_scale = { x=1, y=1, z=3.5 },
+	inventory_image = "orienteering_quadcorder.png",
+})
+
 -- Displays game time
 minetest.register_tool("orienteering:watch", {
 	description = "Watch",
@@ -59,6 +67,7 @@ minetest.register_tool("orienteering:speedometer", {
 minetest.register_tool("orienteering:automapper", {
 	description = "Automapper",
 	wield_image = "orienteering_automapper_wield.png",
+	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_automapper_inv.png",
 })
 
@@ -66,6 +75,7 @@ minetest.register_tool("orienteering:automapper", {
 minetest.register_tool("orienteering:gps", {
 	description = "GPS device",
 	wield_image = "orienteering_gps_wield.png",
+	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_gps_inv.png",
 })
 
@@ -169,7 +179,7 @@ end
 function update_hud_displays(player)
 	local name = player:get_player_name()
 	local inv = player:get_inventory()
-	local gps, altimeter, triangulator, compass, sextant, watch, speedometer
+	local gps, altimeter, triangulator, compass, sextant, watch, speedometer, quadcorder
 
 	if inv:contains_item("main", "orienteering:gps") then
 		gps = true
@@ -192,10 +202,13 @@ function update_hud_displays(player)
 	if inv:contains_item("main", "orienteering:speedometer") then
 		speedometer = true
 	end
+	if inv:contains_item("main", "orienteering:quadcorder") then
+		quadcorder = true
+	end
 
 	local str_pos, str_angles, str_time, str_speed
 	local pos = vector.apply(player:getpos(), math.floor)
-	if (altimeter and triangulator) or gps then
+	if (altimeter and triangulator) or gps or quadcorder then
 		str_pos = "Coordinates: X="..pos.x..", Y="..pos.y..", Z="..pos.z
 	elseif altimeter then
 		str_pos = "Height: Y="..pos.y
@@ -207,7 +220,7 @@ function update_hud_displays(player)
 
 	local yaw = math.floor((player:get_look_yaw()-math.pi*0.5)/(2*math.pi)*360)
 	local pitch = math.floor(player:get_look_pitch()/math.pi*360)
-	if (compass or gps) and sextant then
+	if ((compass or gps) and sextant) or quadcorder then
 		str_angles = "Yaw: "..yaw.."°, pitch: "..pitch.."°"
 	elseif compass or gps then
 		str_angles = "Yaw: "..yaw.."°"
@@ -218,7 +231,7 @@ function update_hud_displays(player)
 	end
 
 	local time = minetest.get_timeofday()
-	if watch or gps then
+	if watch or gps or quadcorder then
 		local totalminutes = time * 1440
 		local hours = math.floor(totalminutes / 60)
 		local minutes = math.floor(math.fmod(totalminutes, 60))
@@ -243,7 +256,7 @@ function update_hud_displays(player)
 	end
 
 	local speed = vector.length(player:get_player_velocity())
-	if speedometer then
+	if speedometer or quadcorder then
 		str_speed = string.format("Velocity: %.2f %s", speed, orienteering.settings.speed_unit)
 	else
 		str_speed = ""
