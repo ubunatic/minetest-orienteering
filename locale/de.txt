@@ -1,0 +1,29 @@
+Altimeter = Höhenmesser
+Triangulator = Triangulator
+Compass = Kompass
+Sextant = Sextant
+Quadcorder = Vierkorder
+Watch = Uhr
+Speedometer = Tacho
+Automapper = Autokartierer
+GPS device = GPS-Gerät
+
+Yaw: %.1f°, pitch: %.1f° = Gier: %.1f°, Nick: %.1f°
+Yaw: %.1f° = Gier: %.1f°
+Pitch: %.1f° = Nick: %.1f
+
+Time: noon = Uhrzeit: Mittag
+Time: midnight = Uhrzeit: Mitternacht
+p.m. = PM
+a.m. = AM
+Time: %i:%02i %s = Uhrzeit: %i:%02i %s
+Time: %02i:%02i = Uhrzeit: %02i:%02i
+
+Speed: %.2f %s = Tempo: %.2f %s
+
+m = m
+m/s = m/s
+
+Coordinates: X\=%d, Y\=%d, Z\=%d = Koordinaten: X\=%d, Y\=%d, Z\=%d
+Height: Y\=%d = Höhe: Y\=%d
+Coordinates: X\=%d, Z\=%d = Koordinaten: X\=%d, Z\=%d

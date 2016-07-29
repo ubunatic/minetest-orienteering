@@ -1,0 +1,39 @@
+# Item names
+Altimeter
+Triangulator
+Compass
+Sextant
+Quadcorder
+Watch
+Speedometer
+Automapper
+GPS device
+
+# Coordinates
+Coordinates: X\=%d, Y\=%d, Z\=%d
+Height: Y\=%d
+Coordinates: X\=%d, Z\=%d
+
+# Angles
+Yaw: %.1f°, pitch: %.1f°
+Yaw: %.1f°
+Pitch: %.1f°
+
+# Time
+## For the 12h mode
+Time: noon
+Time: midnight
+p.m.
+a.m.
+# 12h format Format: hours:minutes a.m/p.m
+Time: %i:%02i %s
+# 24h Format: hours:minutes
+Time: %02i:%02i
+
+# meters
+m
+# meters per second
+m/s
+
+# %.2f will be replaced by number, %s will be replaced by speed unit
+Speed: %.2f %s
