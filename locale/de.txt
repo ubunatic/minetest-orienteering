@@ -10,7 +10,7 @@ GPS device = GPS-Gerät
 
 Yaw: %.1f°, pitch: %.1f° = Gier: %.1f°, Nick: %.1f°
 Yaw: %.1f° = Gier: %.1f°
-Pitch: %.1f° = Nick: %.1f
+Pitch: %.1f° = Nick: %.1f°
 
 Time: noon = Uhrzeit: Mittag
 Time: midnight = Uhrzeit: Mitternacht
