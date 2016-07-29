@@ -12,6 +12,17 @@ orienteering.settings = {}
 orienteering.settings.speed_unit = S("m/s")
 orienteering.settings.length_unit = S("m")
 
+-- Helper function to switch between 12h and 24 mode for the time
+function toggle_time_mode(itemstack, user, pointed_thing)
+	local name = user:get_player_name()
+	if orienteering.playerhuds[name].twelve then
+		orienteering.playerhuds[name].twelve = false
+	else
+		orienteering.playerhuds[name].twelve = true
+	end
+	update_hud_displays(user)
+end
+
 -- Displays height (Y)
 minetest.register_tool("orienteering:altimeter", {
 	description = S("Altimeter"),
@@ -48,6 +59,7 @@ minetest.register_tool("orienteering:quadcorder", {
 	wield_image = "orienteering_quadcorder.png",
 	wield_scale = { x=1, y=1, z=3.5 },
 	inventory_image = "orienteering_quadcorder.png",
+	on_use = toggle_time_mode,
 })
 
 -- Displays game time
@@ -55,15 +67,7 @@ minetest.register_tool("orienteering:watch", {
 	description = S("Watch"),
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
-	on_use = function(itemstack, user, pointed_thing)
-		local name = user:get_player_name()
-		if orienteering.playerhuds[name].twelve then
-			orienteering.playerhuds[name].twelve = false
-		else
-			orienteering.playerhuds[name].twelve = true
-		end
-		update_hud_displays(user)
-	end,
+	on_use = toggle_time_mode,
 })
 
 -- Displays speed
@@ -87,6 +91,7 @@ minetest.register_tool("orienteering:gps", {
 	wield_image = "orienteering_gps_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_gps_inv.png",
+	on_use = toggle_time_mode,
 })
 
 if minetest.get_modpath("default") ~= nil then

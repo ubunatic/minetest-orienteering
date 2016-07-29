@@ -21,13 +21,15 @@ The following tools are available:
 * Triangulator: Shows X and Z coordinates
 * Compass: Shows yaw (horizontal angle)
 * Sextant: Shows pitch (vertical angle)
-* Watch: Shows the time (hours and minutes). Leftclick to toggle between 12h
-  and 24h mode
+* Watch: Shows the time (hours and minutes)
 * Speedometer: Shows speed in m/s (1 m = side length of a single cube)
 * Automapper: Enables the usage of the minimap and radar (F7 key by default)
 * GPS device: Shows X, Y, Z coordinates, yaw and time
 * Quadcorder: Ultimate tool: Shows X, Y, Z coordinates, pitch, yaw, time, speed
   and enables minimap/radar
+
+To toggle between 12h and 24h mode for the displayed time, wield any device
+which is capable of displaying the time and press the left mouse button.
 
 ## Configuration recommendations
 Note that in Minetest, it is also possible to access the coordinates, angles,
