@@ -35,5 +35,5 @@ m
 # meters per second
 m/s
 
-# %.2f will be replaced by number, %s will be replaced by speed unit
-Speed: %.2f %s
+# %.1f will be replaced by number, %s will be replaced by speed unit
+Speed: %.1f %s

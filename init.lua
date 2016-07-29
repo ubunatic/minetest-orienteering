@@ -275,7 +275,7 @@ function update_hud_displays(player)
 
 	local speed = vector.length(player:get_player_velocity())
 	if speedometer or quadcorder then
-		str_speed = string.format(S("Speed: %.2f %s"), speed, orienteering.settings.speed_unit)
+		str_speed = string.format(S("Speed: %.1f %s"), speed, orienteering.settings.speed_unit)
 	else
 		str_speed = ""
 	end

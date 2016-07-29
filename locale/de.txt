@@ -19,7 +19,7 @@ a.m. = AM
 Time: %i:%02i %s = Uhrzeit: %i:%02i %s
 Time: %02i:%02i = Uhrzeit: %02i:%02i
 
-Speed: %.2f %s = Tempo: %.2f %s
+Speed: %.1f %s = Tempo: %.1f %s
 
 m = m
 m/s = m/s
