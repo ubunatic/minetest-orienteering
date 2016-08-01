@@ -311,7 +311,7 @@ minetest.register_globalstep(function(dtime)
 	end
 end)
 
-if minetest.get_modpath("awards") ~= nil and minetest.get_modpath("default") then
+if minetest.get_modpath("awards") ~= nil and minetest.get_modpath("default") ~= nil then
 	awards.register_achievement("orienteering_quadcorder", {
 		title = S("Master of Orienteering"),
 		description = S("Craft a quadcorder."),
