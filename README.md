@@ -9,6 +9,10 @@ Current version: 0.2
 There is an optional dependency on default from Minetest Game.
 It enables the use of crafting recipes.
 
+There is an optional dependency on Achievements [awards] by rubenwardy. If
+both this mod and the default mod are enabled, the achievement “Master of
+Orienteering” will be added.
+
 ## Tools
 The orienteering tools are used automatically. To use them, you only need to
 have them somewhere in your main player inventory. Most tools add information

@@ -310,3 +310,16 @@ minetest.register_globalstep(function(dtime)
 		updatetimer = updatetimer - dtime
 	end
 end)
+
+if minetest.get_modpath("awards") ~= nil and minetest.get_modpath("default") then
+	awards.register_achievement("orienteering_quadcorder", {
+		title = S("Master of Orienteering"),
+		description = S("Craft a quadcorder."),
+		icon = "orienteering_quadcorder.png",
+		trigger = {
+			type = "craft",
+			item = "orienteering:quadcorder",
+			target = 1
+		}
+	})
+end

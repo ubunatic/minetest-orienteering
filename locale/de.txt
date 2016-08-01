@@ -27,3 +27,6 @@ m/s = m/s
 Coordinates: X\=%d, Y\=%d, Z\=%d = Koordinaten: X\=%d, Y\=%d, Z\=%d
 Height: Y\=%d = Höhe: Y\=%d
 Coordinates: X\=%d, Z\=%d = Koordinaten: X\=%d, Z\=%d
+
+Master of Orienteering = Meister der Orientierung
+Craft a quadcorder. = Fertige einen Vierkorder.
