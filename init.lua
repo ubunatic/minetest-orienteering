@@ -323,3 +323,34 @@ if minetest.get_modpath("awards") ~= nil and minetest.get_modpath("default") ~= 
 		}
 	})
 end
+
+if minetest.get_modpath("doc_items") ~= nil then
+	doc.sub.items.set_items_longdesc({
+		["orienteering:compass"] = S("It shows you your yaw (horizontal viewing angle) in degrees."),
+		["orienteering:sextant"] = S("It shows you your pitch (vertical viewing angle) in degrees."),
+		["orienteering:altimeter"] = S("It shows you your current elevation (Y)."),
+		["orienteering:triangulator"] = S("It shows you the coordinates of your current position in the horizontal plane (X and Z)."),
+		["orienteering:gps"] = S("The GPS device shows you your coordinates (X, Y and Z), your yaw (horizontal viewing angle) and the time."),
+		["orienteering:speedometer"] = S("It shows you your current speed in meters per second, where one meter is the side length of a single cube."),
+		["orienteering:watch"] = S("It shows you the current time."),
+		["orienteering:quadcorder"] = S("This is the ultimate orientieering tool. It shows you your coordinates (X, Y and Z), shows your yaw and pitch (horizontal and vertical viewing angles), the current time, your current speed and it enables you to access the minimap."),
+		["orienteering:automapper"] = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
+	})
+
+	local use = S("Put this tool anywhere in your player inventory to see the data it provides.")
+	local use_watch = S("Put this tool anywhere in your player inventory to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
+	local use_time = S("Put this tool anywhere in your player inventory to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
+	local use_automapper = S("If you put an automapper in your player inventory, you will be able to access the minimap. By default the minimap can be opened with [F7].")
+
+	doc.sub.items.set_items_usagehelp({
+		["orienteering:compass"] = use,
+		["orienteering:sextant"] = use,
+		["orienteering:altimeter"] = use,
+		["orienteering:triangulator"] = use,
+		["orienteering:gps"] = use_time,
+		["orienteering:speedometer"] = use,
+		["orienteering:watch"] = use_watch,
+		["orienteering:quadcorder"] = use_time,
+		["orienteering:automapper"] = use_automapper,
+	})
+end
