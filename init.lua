@@ -338,7 +338,7 @@ if minetest.get_modpath("doc_items") ~= nil then
 	})
 
 	local use = S("Put this tool anywhere in your player inventory to see the data it provides.")
-	local use_watch = S("Put this tool anywhere in your player inventory to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
+	local use_watch = S("Put the watch anywhere in your player inventory to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
 	local use_time = S("Put this tool anywhere in your player inventory to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
 	local use_automapper = S("If you put an automapper in your player inventory, you will be able to access the minimap. By default the minimap can be opened with [F7].")
 
