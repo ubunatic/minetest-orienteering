@@ -99,9 +99,9 @@ if minetest.get_modpath("default") ~= nil then
 	minetest.register_craft({
 		output = "orienteering:altimeter",
 		recipe = {
-			{"default:copper_ingot"}, 
-			{"default:copper_ingot"}, 
-			{"default:copper_ingot"}, 
+			{"default:steel_ingot"},
+			{"default:steel_ingot"},
+			{"default:steel_ingot"},
 		}
 	})
 	minetest.register_craft({
@@ -129,9 +129,9 @@ if minetest.get_modpath("default") ~= nil then
 	minetest.register_craft({
 		output = "orienteering:speedometer",
 		recipe = {
-			{"", "default:steel_ingot", ""}, 
-			{"default:steel_ingot", "group:stick", "default:steel_ingot"}, 
-			{"", "default:steel_ingot", ""}, 
+			{"", "default:gold_ingot", ""},
+			{"default:steel_ingot", "group:stick", "default:steel_ingot"},
+			{"", "default:steel_ingot", ""},
 		}
 	})
 	minetest.register_craft({
