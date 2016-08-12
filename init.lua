@@ -242,7 +242,7 @@ function update_hud_displays(player)
 	end
 
 	local yaw = (player:get_look_yaw()-math.pi*0.5)/(2*math.pi)*360
-	local pitch = player:get_look_pitch()/math.pi*360
+	local pitch = player:get_look_pitch()/math.pi*180
 	if ((compass or gps) and sextant) or quadcorder then
 		str_angles = string.format(S("Yaw: %.1f°, pitch: %.1f°"), yaw, pitch)
 	elseif compass or gps then
