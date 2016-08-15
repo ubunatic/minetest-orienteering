@@ -29,7 +29,7 @@ Height: Y\=%d = Höhe: Y\=%d
 Coordinates: X\=%d, Z\=%d = Koordinaten: X\=%d, Z\=%d
 
 Master of Orienteering = Meister der Orientierung
-Craft a quadcorder. = Fertige einen Vierkorder.
+Craft a quadcorder. = Fertigen Sie einen Vierkorder.
 
 It shows you your yaw (horizontal viewing angle) in degrees. = Er zeigt Ihnen Ihre Gierung (horizontaler Blickwinkel) in Grad.
 It shows you your pitch (vertical viewing angle) in degrees. = Er zeigt Ihnen Ihren Nick (vertikaler Blickwinkel) in Grad.
