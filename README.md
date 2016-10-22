@@ -49,7 +49,7 @@ following line into your `minetest.conf`:
 ## Crafting recipes
 Crafting recipes are only available when the default mod is used.
 
-Legend:
+Symbols:
 
 * S = Steel ingot
 * C = Copper ingot
