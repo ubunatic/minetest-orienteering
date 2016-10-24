@@ -278,7 +278,13 @@ function update_hud_displays(player)
 		str_time = ""
 	end
 
-	local speed = vector.length(player:get_player_velocity())
+	local speed
+	local attach = player:get_attach()
+	if attach == nil then
+		speed = vector.length(player:get_player_velocity())
+	else
+		speed = vector.length(attach:getvelocity())
+	end
 	if speedometer or quadcorder then
 		str_speed = string.format(S("Speed: %.1f %s"), speed, orienteering.settings.speed_unit)
 	else
