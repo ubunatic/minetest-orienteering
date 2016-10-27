@@ -99,7 +99,7 @@ if minetest.get_modpath("default") ~= nil then
 	minetest.register_craft({
 		output = "orienteering:altimeter",
 		recipe = {
-			{"default:steel_ingot"},
+			{"default:glass"},
 			{"default:steel_ingot"},
 			{"default:steel_ingot"},
 		}
