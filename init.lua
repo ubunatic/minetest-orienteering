@@ -12,6 +12,8 @@ orienteering.settings = {}
 orienteering.settings.speed_unit = S("m/s")
 orienteering.settings.length_unit = S("m")
 
+local o_lines = 4 -- Number of lines in HUD
+
 -- Helper function to switch between 12h and 24 mode for the time
 function toggle_time_mode(itemstack, user, pointed_thing)
 	local name = user:get_player_name()
@@ -184,9 +186,8 @@ function init_hud(player)
 	update_automapper(player)
 	local name = player:get_player_name()
 	orienteering.playerhuds[name] = {}
-	local tablenames = { "pos", "angles", "time", "speed" }
-	for i=1, #tablenames do
-		orienteering.playerhuds[name][tablenames[i]] = player:hud_add({
+	for i=1, o_lines do
+		orienteering.playerhuds[name]["o_line"..i] = player:hud_add({
 			hud_elem_type = "text",
 			text = "",
 			position = { x = 0.5, y = 0.001 },
@@ -297,10 +298,17 @@ function update_hud_displays(player)
 		str_speed = ""
 	end
 
-	player:hud_change(orienteering.playerhuds[name].pos, "text", str_pos)
-	player:hud_change(orienteering.playerhuds[name].angles, "text", str_angles)
-	player:hud_change(orienteering.playerhuds[name].time, "text", str_time)
-	player:hud_change(orienteering.playerhuds[name].speed, "text", str_speed)
+	local strs = { str_pos, str_angles, str_time, str_speed }
+	local line = 1
+	for i=1, o_lines do
+		if strs[i] ~= "" then
+			player:hud_change(orienteering.playerhuds[name]["o_line"..line], "text", strs[i])
+			line = line + 1
+		end
+	end
+	for l=line, o_lines do
+		player:hud_change(orienteering.playerhuds[name]["o_line"..l], "text", "")
+	end
 end
 
 minetest.register_on_newplayer(init_hud)
