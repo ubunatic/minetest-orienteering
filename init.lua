@@ -278,15 +278,21 @@ function update_hud_displays(player)
 		str_time = ""
 	end
 
-	local speed
+	local speed_hor, speed_ver
+	local v
 	local attach = player:get_attach()
 	if attach == nil then
-		speed = vector.length(player:get_player_velocity())
+		v = player:get_player_velocity()
 	else
-		speed = vector.length(attach:getvelocity())
+		v = attach:getvelocity()
 	end
+	speed_ver = v.y
+	v.y = 0
+	speed_hor = vector.length(v)
+
 	if speedometer or quadcorder then
-		str_speed = string.format(S("Speed: %.1f %s"), speed, orienteering.settings.speed_unit)
+		local u = orienteering.settings.speed_unit
+		str_speed = string.format(S("Speed: hor.: %.1f %s, vert.: %.1f %s"), speed_hor, u, speed_ver, u)
 	else
 		str_speed = ""
 	end
@@ -337,7 +343,7 @@ if minetest.get_modpath("doc_items") ~= nil then
 		["orienteering:altimeter"] = S("It shows you your current elevation (Y)."),
 		["orienteering:triangulator"] = S("It shows you the coordinates of your current position in the horizontal plane (X and Z)."),
 		["orienteering:gps"] = S("The GPS device shows you your coordinates (X, Y and Z), your yaw (horizontal viewing angle) and the time."),
-		["orienteering:speedometer"] = S("It shows you your current speed in meters per second, where one meter is the side length of a single cube."),
+		["orienteering:speedometer"] = S("It shows you your current horizontal (“hor.”) and vertical (“ver.”) speed in meters per second, where one meter is the side length of a single cube."),
 		["orienteering:watch"] = S("It shows you the current time."),
 		["orienteering:quadcorder"] = S("This is the ultimate orientieering tool. It shows you your coordinates (X, Y and Z), shows your yaw and pitch (horizontal and vertical viewing angles), the current time, your current speed and it enables you to access the minimap."),
 		["orienteering:automapper"] = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),

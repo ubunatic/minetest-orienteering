@@ -36,7 +36,8 @@ m
 m/s
 
 # %.1f will be replaced by number, %s will be replaced by speed unit
-Speed: %.1f %s
+# "hor." = "horizontal"; "vert." = "vertical"
+Speed: hor.: %.1f %s, vert.: %.1f %s
 
 # awards
 Master of Orienteering
@@ -48,7 +49,7 @@ It shows you your pitch (vertical viewing angle) in degrees.
 It shows you your current elevation (Y).
 It shows you the coordinates of your current position in the horizontal plane (X and Z).
 The GPS device shows you your coordinates (X, Y and Z), your yaw (horizontal viewing angle) and the time.
-It shows you your current speed in meters per second, where one meter is the side length of a single cube.
+It shows you your current horizontal (“hor.”) and vertical (“ver.”) speed in meters per second, where one meter is the side length of a single cube.
 It shows you the current time.
 This is the ultimate orientieering tool. It shows you your coordinates (X, Y and Z), shows your yaw and pitch (horizontal and vertical viewing angles), the current time, your current speed and it enables you to access the minimap.
 The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar.
