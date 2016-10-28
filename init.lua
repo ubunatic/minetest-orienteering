@@ -11,6 +11,26 @@ orienteering.playerhuds = {}
 orienteering.settings = {}
 orienteering.settings.speed_unit = S("m/s")
 orienteering.settings.length_unit = S("m")
+orienteering.settings.hud_pos = { x = 0.5, y = 0 }
+orienteering.settings.hud_offset = { x = 0, y = 15 }
+orienteering.settings.hud_alignment = { x = 0, y = 0 }
+
+local set = tonumber(minetest.setting_get("orienteering_hud_pos_x"))
+if set then orienteering.settings.hud_pos.x = set end
+set = tonumber(minetest.setting_get("orienteering_hud_pos_y"))
+if set then orienteering.settings.hud_pos.y = set end
+set = tonumber(minetest.setting_get("orienteering_hud_offset_x"))
+if set then orienteering.settings.hud_offset.x = set end
+set = tonumber(minetest.setting_get("orienteering_hud_offset_y"))
+if set then orienteering.settings.hud_offset.y = set end
+set = minetest.setting_get("orienteering_hud_alignment")
+if set == "left" then
+	orienteering.settings.hud_alignment.x = 1
+elseif set == "center" then
+	orienteering.settings.hud_alignment.x = 0
+elseif set == "right" then
+	orienteering.settings.hud_alignment.x = -1
+end
 
 local o_lines = 4 -- Number of lines in HUD
 
@@ -182,6 +202,8 @@ function update_automapper(player)
 	end
 end
 
+
+
 function init_hud(player)
 	update_automapper(player)
 	local name = player:get_player_name()
@@ -190,9 +212,9 @@ function init_hud(player)
 		orienteering.playerhuds[name]["o_line"..i] = player:hud_add({
 			hud_elem_type = "text",
 			text = "",
-			position = { x = 0.5, y = 0.001 },
-			offset = { x = 0, y = 0+20*i },
-			alignment = { x = 0, y = 0 },
+			position = orienteering.settings.hud_pos,
+			offset = { x = orienteering.settings.hud_offset.x, y = orienteering.settings.hud_offset.y + 20*(i-1) },
+			alignment = orienteering.settings.hud_alignment,
 			number = 0xFFFFFF,
 			scale= { x = 100, y = 20 },
 		})

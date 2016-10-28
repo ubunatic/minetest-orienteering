@@ -35,7 +35,8 @@ The following tools are available:
 To toggle between 12h and 24h mode for the displayed time, wield any device
 which is capable of displaying the time and press the left mouse button.
 
-## Configuration recommendations
+## Configuration
+### Recommendations
 Note that in Minetest, it is also possible to access the coordinates, angles,
 etc. through the debug menu, but this would be generally considered cheating as
 this defeats the purpose of this mod. Try to resist this urge.
@@ -45,6 +46,9 @@ following line into your `minetest.conf`:
 
     keymap_toggle_debug = 
 
+### HUD text position
+The text position can be configured by using Minetest's settings system. See
+the advanced settings menu for more information.
 
 ## Crafting recipes
 Crafting recipes are only available when the default mod is used.
