@@ -194,15 +194,25 @@ end
 
 
 function orienteering.update_automapper(player)
-	local inv = player:get_inventory()
-	if inv:contains_item("main", "orienteering:automapper") or inv:contains_item("main", "orienteering:quadcorder") then
+	if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") then
 		player:hud_set_flags({minimap = true})
 	else
 		player:hud_set_flags({minimap = false})
 	end
 end
 
-
+-- Checks whether a certain orienteering tool is “active” and ready for use
+function orienteering.tool_active(player, item)
+	-- Requirement: player carries the tool in the hotbar
+	local inv = player:get_inventory()
+	local hotbar = player:hud_get_hotbar_itemcount()
+	for i=1, hotbar do
+		if inv:get_stack("main", i):get_name() == item then
+			return true
+		end
+	end
+	return false
+end
 
 function orienteering.init_hud(player)
 	orienteering.update_automapper(player)
@@ -224,31 +234,30 @@ end
 
 function orienteering.update_hud_displays(player)
 	local name = player:get_player_name()
-	local inv = player:get_inventory()
 	local gps, altimeter, triangulator, compass, sextant, watch, speedometer, quadcorder
 
-	if inv:contains_item("main", "orienteering:gps") then
+	if orienteering.tool_active(player, "orienteering:gps") then
 		gps = true
 	end
-	if inv:contains_item("main", "orienteering:altimeter") then
+	if orienteering.tool_active(player, "orienteering:altimeter") then
 		altimeter = true
 	end
-	if inv:contains_item("main", "orienteering:triangulator") then
+	if orienteering.tool_active(player, "orienteering:triangulator") then
 		triangulator = true
 	end
-	if inv:contains_item("main", "orienteering:compass") then
+	if orienteering.tool_active(player, "orienteering:compass") then
 		compass = true
 	end
-	if inv:contains_item("main", "orienteering:sextant") then
+	if orienteering.tool_active(player, "orienteering:sextant") then
 		sextant = true
 	end
-	if inv:contains_item("main", "orienteering:watch") then
+	if orienteering.tool_active(player, "orienteering:watch") then
 		watch = true
 	end
-	if inv:contains_item("main", "orienteering:speedometer") then
+	if orienteering.tool_active(player, "orienteering:speedometer") then
 		speedometer = true
 	end
-	if inv:contains_item("main", "orienteering:quadcorder") then
+	if orienteering.tool_active(player, "orienteering:quadcorder") then
 		quadcorder = true
 	end
 
@@ -379,10 +388,10 @@ if minetest.get_modpath("doc_items") ~= nil then
 		["orienteering:automapper"] = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
 	})
 
-	local use = S("Put this tool anywhere in your player inventory to see the data it provides.")
-	local use_watch = S("Put the watch anywhere in your player inventory to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
-	local use_time = S("Put this tool anywhere in your player inventory to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
-	local use_automapper = S("If you put an automapper in your player inventory, you will be able to access the minimap. By default the minimap can be opened with [F7].")
+	local use = S("Put this tool in your hotbar to see the data it provides.")
+	local use_watch = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
+	local use_time = S("Put this tool in your hotbar to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
+	local use_automapper = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7].")
 
 	doc.sub.items.set_items_usagehelp({
 		["orienteering:compass"] = use,

@@ -15,9 +15,9 @@ Orienteering” will be added.
 
 ## Tools
 The orienteering tools are used automatically. To use them, you only need to
-have them somewhere in your main player inventory. Most tools add information
-at the top section of your screen. The minimap is disabled by default, in this
-mod you have to acquire the proper tool first.
+have them somewhere in your hotbar. Most tools add information at the top
+section of your screen. The minimap is disabled by default, in this mod
+you have to acquire the proper tool first.
 
 The following tools are available:
 
