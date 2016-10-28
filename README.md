@@ -55,12 +55,13 @@ Crafting recipes are only available when the default mod is used.
 
 Symbols:
 
-* S = Steel ingot
-* C = Copper ingot
-* B = Bronze ingot
-* G = Gold ingot
-* M = Mese crystal
+* S = Steel Ingot
+* C = Copper Ingot
+* B = Bronze Ingot
+* G = Gold Ingot
+* M = Mese Crystal
 * D = Diamond
+* O = Obsidian Shard
 * s = Stick
 * g = Glass
 * 1 = Altimeter
@@ -101,7 +102,7 @@ Symbols:
     C
 
 ### Speedometer
-     S
+     G
     SsS
      S
 
