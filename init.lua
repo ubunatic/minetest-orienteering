@@ -35,14 +35,14 @@ end
 local o_lines = 4 -- Number of lines in HUD
 
 -- Helper function to switch between 12h and 24 mode for the time
-function toggle_time_mode(itemstack, user, pointed_thing)
+function orienteering.toggle_time_mode(itemstack, user, pointed_thing)
 	local name = user:get_player_name()
 	if orienteering.playerhuds[name].twelve then
 		orienteering.playerhuds[name].twelve = false
 	else
 		orienteering.playerhuds[name].twelve = true
 	end
-	update_hud_displays(user)
+	orienteering.update_hud_displays(user)
 end
 
 -- Displays height (Y)
@@ -81,7 +81,7 @@ minetest.register_tool("orienteering:quadcorder", {
 	wield_image = "orienteering_quadcorder.png",
 	wield_scale = { x=1, y=1, z=3.5 },
 	inventory_image = "orienteering_quadcorder.png",
-	on_use = toggle_time_mode,
+	on_use = orienteering.toggle_time_mode,
 })
 
 -- Displays game time
@@ -89,7 +89,7 @@ minetest.register_tool("orienteering:watch", {
 	description = S("Watch"),
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
-	on_use = toggle_time_mode,
+	on_use = orienteering.toggle_time_mode,
 })
 
 -- Displays speed
@@ -113,7 +113,7 @@ minetest.register_tool("orienteering:gps", {
 	wield_image = "orienteering_gps_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_gps_inv.png",
-	on_use = toggle_time_mode,
+	on_use = orienteering.toggle_time_mode,
 })
 
 if minetest.get_modpath("default") ~= nil then
@@ -193,7 +193,7 @@ end
 
 
 
-function update_automapper(player)
+function orienteering.update_automapper(player)
 	local inv = player:get_inventory()
 	if inv:contains_item("main", "orienteering:automapper") or inv:contains_item("main", "orienteering:quadcorder") then
 		player:hud_set_flags({minimap = true})
@@ -204,8 +204,8 @@ end
 
 
 
-function init_hud(player)
-	update_automapper(player)
+function orienteering.init_hud(player)
+	orienteering.update_automapper(player)
 	local name = player:get_player_name()
 	orienteering.playerhuds[name] = {}
 	for i=1, o_lines do
@@ -222,7 +222,7 @@ function init_hud(player)
 	orienteering.playerhuds[name].twelve = false
 end
 
-function update_hud_displays(player)
+function orienteering.update_hud_displays(player)
 	local name = player:get_player_name()
 	local inv = player:get_inventory()
 	local gps, altimeter, triangulator, compass, sextant, watch, speedometer, quadcorder
@@ -333,8 +333,8 @@ function update_hud_displays(player)
 	end
 end
 
-minetest.register_on_newplayer(init_hud)
-minetest.register_on_joinplayer(init_hud)
+minetest.register_on_newplayer(orienteering.init_hud)
+minetest.register_on_joinplayer(orienteering.init_hud)
 
 minetest.register_on_leaveplayer(function(player)
 	orienteering.playerhuds[player:get_player_name()] = nil
@@ -346,8 +346,8 @@ minetest.register_globalstep(function(dtime)
 	if updatetimer > 0.1 then
 		local players = minetest.get_connected_players()
 		for i=1, #players do
-			update_automapper(players[i])
-			update_hud_displays(players[i])
+			orienteering.update_automapper(players[i])
+			orienteering.update_hud_displays(players[i])
 		end
 		updatetimer = updatetimer - dtime
 	end
