@@ -74,7 +74,7 @@ Symbols:
 
 ### Altimeter
 
-    C
+    g
     C
     C
 
