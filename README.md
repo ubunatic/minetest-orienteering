@@ -31,7 +31,6 @@ The following tools are available:
 * GPS device: Shows X, Y, Z coordinates, yaw and time
 * Quadcorder: Combination of everything above: Shows X, Y, Z coordinates, pitch,
   yaw, time, speed and enables minimap/radar
-* Binoculars: Allows you to zoom (must wield to use)
 
 To toggle between 12h and 24h mode for the displayed time, wield any device
 which is capable of displaying the time and press the left mouse button.
@@ -123,14 +122,6 @@ Symbols:
     GGG
     6D7
     4D8
-
-### Binoculars
-
-    g g
-    SSS
-    S S
-
-
 
 ## License
 Everything is licensed under WTFPL.
