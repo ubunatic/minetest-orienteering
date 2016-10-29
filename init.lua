@@ -107,6 +107,13 @@ minetest.register_tool("orienteering:automapper", {
 	inventory_image = "orienteering_automapper_inv.png",
 })
 
+-- Allows zooming
+minetest.register_tool("orienteering:binoculars", {
+	description = S("Binoculars"),
+	wield_image = "orienteering_binoculars.png",
+	inventory_image = "orienteering_binoculars_inv.png",
+})
+
 -- Displays X,Y,Z coordinates, yaw and game time
 minetest.register_tool("orienteering:gps", {
 	description = S("GPS device"),
@@ -201,6 +208,27 @@ function orienteering.update_automapper(player)
 	end
 end
 
+function orienteering.update_binoculars(player)
+	local wielding = player:get_wielded_item()
+	local playername = player:get_player_name()
+	local privs = minetest.get_player_privs(playername)
+	if not wielding:is_empty() and wielding:get_name() == "orienteering:binoculars" then
+		-- Has binoculars
+		if privs.zoom ~= true then
+			privs.zoom = true
+			minetest.set_player_privs(playername, privs)
+		end
+	else
+		-- Does not have binoculars
+		if privs.zoom == true then
+			privs.zoom = nil
+			minetest.set_player_privs(playername, privs)
+		end
+	end
+end
+
+
+
 -- Checks whether a certain orienteering tool is “active” and ready for use
 function orienteering.tool_active(player, item)
 	-- Requirement: player carries the tool in the hotbar
@@ -216,6 +244,7 @@ end
 
 function orienteering.init_hud(player)
 	orienteering.update_automapper(player)
+	orienteering.update_binoculars(player)
 	local name = player:get_player_name()
 	orienteering.playerhuds[name] = {}
 	for i=1, o_lines do
@@ -356,6 +385,7 @@ minetest.register_globalstep(function(dtime)
 		local players = minetest.get_connected_players()
 		for i=1, #players do
 			orienteering.update_automapper(players[i])
+			orienteering.update_binoculars(players[i])
 			orienteering.update_hud_displays(players[i])
 		end
 		updatetimer = updatetimer - dtime
@@ -386,12 +416,14 @@ if minetest.get_modpath("doc_items") ~= nil then
 		["orienteering:watch"] = S("It shows you the current time."),
 		["orienteering:quadcorder"] = S("This is the ultimate orientieering tool. It shows you your coordinates (X, Y and Z), shows your yaw and pitch (horizontal and vertical viewing angles), the current time, your current speed and it enables you to access the minimap."),
 		["orienteering:automapper"] = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
+		["orienteering:binoculars"] = S("Binoculars allow you to zoom."),
 	})
 
 	local use = S("Put this tool in your hotbar to see the data it provides.")
 	local use_watch = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
 	local use_time = S("Put this tool in your hotbar to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
 	local use_automapper = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7].")
+	local use_binoculars = S("Wield the binoculars to be able to zoom. Hold down the Zoom key (default: [Z]) to zoom.")
 
 	doc.sub.items.set_items_usagehelp({
 		["orienteering:compass"] = use,
@@ -403,5 +435,6 @@ if minetest.get_modpath("doc_items") ~= nil then
 		["orienteering:watch"] = use_watch,
 		["orienteering:quadcorder"] = use_time,
 		["orienteering:automapper"] = use_automapper,
+		["orienteering:binoculars"] = use_binoculars,
 	})
 end

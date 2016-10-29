@@ -29,8 +29,9 @@ The following tools are available:
 * Speedometer: Shows speed in m/s (1 m = side length of a single cube)
 * Automapper: Enables the usage of the minimap and radar (F7 key by default)
 * GPS device: Shows X, Y, Z coordinates, yaw and time
-* Quadcorder: Ultimate tool: Shows X, Y, Z coordinates, pitch, yaw, time, speed
-  and enables minimap/radar
+* Quadcorder: Combination of everything above: Shows X, Y, Z coordinates, pitch,
+  yaw, time, speed and enables minimap/radar
+* Binoculars: Allows you to zoom (must wield to use)
 
 To toggle between 12h and 24h mode for the displayed time, wield any device
 which is capable of displaying the time and press the left mouse button.
@@ -123,6 +124,11 @@ Symbols:
     6D7
     4D8
 
+### Binoculars
+
+    g g
+    S S
+    SSS
 
 
 
