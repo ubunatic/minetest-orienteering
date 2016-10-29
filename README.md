@@ -3,7 +3,7 @@ This mod adds several tools which mostly aid in orientation. When carrying them,
 this will enhance the HUD by adding several interesting information such as the
 coordinates or the viewing angles or enabling the use of the minimap.
 
-Current version: 0.3
+Current version: 0.4
 
 ## Dependencies
 There is an optional dependency on default from Minetest Game.
