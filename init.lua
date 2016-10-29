@@ -110,7 +110,7 @@ minetest.register_tool("orienteering:automapper", {
 -- Allows zooming
 minetest.register_tool("orienteering:binoculars", {
 	description = S("Binoculars"),
-	wield_image = "orienteering_binoculars.png",
+	wield_image = "orienteering_binoculars_wield.png",
 	inventory_image = "orienteering_binoculars_inv.png",
 })
 
