@@ -127,8 +127,8 @@ Symbols:
 ### Binoculars
 
     g g
-    S S
     SSS
+    S S
 
 
 

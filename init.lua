@@ -172,6 +172,14 @@ if minetest.get_modpath("default") ~= nil then
 		}
 	})
 	minetest.register_craft({
+		output = "orienteering:binoculars",
+		recipe = {
+			{"default:glass", "", "default:glass"},
+			{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+			{"default:steel_ingot", "", "default:steel_ingot"},
+		}
+	})
+	minetest.register_craft({
 		output = "orienteering:gps",
 		recipe = {
 			{ "default:gold_ingot", "orienteering:triangulator", "default:gold_ingot" },
