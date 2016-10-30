@@ -45,9 +45,16 @@ function orienteering.toggle_time_mode(itemstack, user, pointed_thing)
 	orienteering.update_hud_displays(user)
 end
 
+local use = S("Put this tool in your hotbar to see the data it provides.")
+local use_watch = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
+local use_time = S("Put this tool in your hotbar to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
+local use_automapper = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7].")
+
 -- Displays height (Y)
 minetest.register_tool("orienteering:altimeter", {
 	description = S("Altimeter"),
+	x_doc_items_longdesc = S("It shows you your current elevation (Y)."),
+	x_doc_items_usagehelp = use,
 	wield_image = "orienteering_altimeter.png",
 	inventory_image = "orienteering_altimeter.png",
 })
@@ -55,6 +62,8 @@ minetest.register_tool("orienteering:altimeter", {
 -- Displays X and Z coordinates
 minetest.register_tool("orienteering:triangulator", {
 	description = S("Triangulator"),
+	x_doc_items_longdesc = S("It shows you the coordinates of your current position in the horizontal plane (X and Z)."),
+	x_doc_items_usagehelp = use,
 	wield_image = "orienteering_triangulator.png",
 	inventory_image = "orienteering_triangulator.png",
 })
@@ -63,6 +72,8 @@ minetest.register_tool("orienteering:triangulator", {
 -- TODO: calculate yaw difference between 2 points
 minetest.register_tool("orienteering:compass", {
 	description = S("Compass"),
+	x_doc_items_longdesc = S("It shows you your yaw (horizontal viewing angle) in degrees."),
+	x_doc_items_usagehelp = use,
 	wield_image = "orienteering_compass_wield.png",
 	inventory_image = "orienteering_compass_inv.png",
 })
@@ -71,6 +82,8 @@ minetest.register_tool("orienteering:compass", {
 -- TODO: calculate pitch difference between 2 points
 minetest.register_tool("orienteering:sextant", {
 	description = S("Sextant"),
+	x_doc_items_longdesc = S("It shows you your pitch (vertical viewing angle) in degrees."),
+	x_doc_items_usagehelp = use,
 	wield_image = "orienteering_sextant_wield.png",
 	inventory_image = "orienteering_sextant_inv.png",
 })
@@ -78,7 +91,9 @@ minetest.register_tool("orienteering:sextant", {
 -- Ultimate orienteering tool: Displays X,Y,Z, yaw, pitch, time, speed and enables the minimap
 minetest.register_tool("orienteering:quadcorder", {
 	description = S("Quadcorder"),
+	x_doc_items_longdesc = S("This is the ultimate orientieering tool. It shows you your coordinates (X, Y and Z), shows your yaw and pitch (horizontal and vertical viewing angles), the current time, your current speed and it enables you to access the minimap."),
 	wield_image = "orienteering_quadcorder.png",
+	x_doc_items_usagehelp = use_time,
 	wield_scale = { x=1, y=1, z=3.5 },
 	inventory_image = "orienteering_quadcorder.png",
 	on_use = orienteering.toggle_time_mode,
@@ -87,6 +102,8 @@ minetest.register_tool("orienteering:quadcorder", {
 -- Displays game time
 minetest.register_tool("orienteering:watch", {
 	description = S("Watch"),
+	x_doc_items_longdesc = S("It shows you the current time."),
+	x_doc_items_usagehelp = use_watch,
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
 	on_use = orienteering.toggle_time_mode,
@@ -95,6 +112,8 @@ minetest.register_tool("orienteering:watch", {
 -- Displays speed
 minetest.register_tool("orienteering:speedometer", {
 	description = S("Speedometer"),
+	x_doc_items_longdesc = S("It shows you your current horizontal (“hor.”) and vertical (“ver.”) speed in meters per second, where one meter is the side length of a single cube."),
+	x_doc_items_usagehelp = use,
 	wield_image = "orienteering_speedometer_wield.png",
 	inventory_image = "orienteering_speedometer_inv.png",
 })
@@ -102,6 +121,8 @@ minetest.register_tool("orienteering:speedometer", {
 -- Enables minimap
 minetest.register_tool("orienteering:automapper", {
 	description = S("Automapper"),
+	x_doc_items_longdesc = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
+	x_doc_items_usagehelp = use_automapper,
 	wield_image = "orienteering_automapper_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_automapper_inv.png",
@@ -110,6 +131,8 @@ minetest.register_tool("orienteering:automapper", {
 -- Displays X,Y,Z coordinates, yaw and game time
 minetest.register_tool("orienteering:gps", {
 	description = S("GPS device"),
+	x_doc_items_longdesc = S("The GPS device shows you your coordinates (X, Y and Z), your yaw (horizontal viewing angle) and the time."),
+	x_doc_items_usagehelp = use_time,
 	wield_image = "orienteering_gps_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_gps_inv.png",
@@ -372,36 +395,5 @@ if minetest.get_modpath("awards") ~= nil and minetest.get_modpath("default") ~= 
 			item = "orienteering:quadcorder",
 			target = 1
 		}
-	})
-end
-
-if minetest.get_modpath("doc_items") ~= nil then
-	doc.sub.items.set_items_longdesc({
-		["orienteering:compass"] = S("It shows you your yaw (horizontal viewing angle) in degrees."),
-		["orienteering:sextant"] = S("It shows you your pitch (vertical viewing angle) in degrees."),
-		["orienteering:altimeter"] = S("It shows you your current elevation (Y)."),
-		["orienteering:triangulator"] = S("It shows you the coordinates of your current position in the horizontal plane (X and Z)."),
-		["orienteering:gps"] = S("The GPS device shows you your coordinates (X, Y and Z), your yaw (horizontal viewing angle) and the time."),
-		["orienteering:speedometer"] = S("It shows you your current horizontal (“hor.”) and vertical (“ver.”) speed in meters per second, where one meter is the side length of a single cube."),
-		["orienteering:watch"] = S("It shows you the current time."),
-		["orienteering:quadcorder"] = S("This is the ultimate orientieering tool. It shows you your coordinates (X, Y and Z), shows your yaw and pitch (horizontal and vertical viewing angles), the current time, your current speed and it enables you to access the minimap."),
-		["orienteering:automapper"] = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
-	})
-
-	local use = S("Put this tool in your hotbar to see the data it provides.")
-	local use_watch = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
-	local use_time = S("Put this tool in your hotbar to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
-	local use_automapper = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7].")
-
-	doc.sub.items.set_items_usagehelp({
-		["orienteering:compass"] = use,
-		["orienteering:sextant"] = use,
-		["orienteering:altimeter"] = use,
-		["orienteering:triangulator"] = use,
-		["orienteering:gps"] = use_time,
-		["orienteering:speedometer"] = use,
-		["orienteering:watch"] = use_watch,
-		["orienteering:quadcorder"] = use_time,
-		["orienteering:automapper"] = use_automapper,
 	})
 end

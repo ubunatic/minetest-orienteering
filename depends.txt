@@ -1,4 +1,3 @@
 default?
 intllib?
 awards?
-doc_items?
