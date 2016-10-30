@@ -46,9 +46,7 @@ function orienteering.toggle_time_mode(itemstack, user, pointed_thing)
 end
 
 local use = S("Put this tool in your hotbar to see the data it provides.")
-local use_watch = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display.")
 local use_time = S("Put this tool in your hotbar to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
-local use_automapper = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7].")
 
 -- Displays height (Y)
 minetest.register_tool("orienteering:altimeter", {
@@ -103,7 +101,7 @@ minetest.register_tool("orienteering:quadcorder", {
 minetest.register_tool("orienteering:watch", {
 	description = S("Watch"),
 	x_doc_items_longdesc = S("It shows you the current time."),
-	x_doc_items_usagehelp = use_watch,
+	x_doc_items_usagehelp = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display."),
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
 	on_use = orienteering.toggle_time_mode,
@@ -122,7 +120,7 @@ minetest.register_tool("orienteering:speedometer", {
 minetest.register_tool("orienteering:automapper", {
 	description = S("Automapper"),
 	x_doc_items_longdesc = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
-	x_doc_items_usagehelp = use_automapper,
+	x_doc_items_usagehelp = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7]."),
 	wield_image = "orienteering_automapper_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_automapper_inv.png",
