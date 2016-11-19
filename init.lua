@@ -308,8 +308,8 @@ function orienteering.update_hud_displays(player)
 	local time = minetest.get_timeofday()
 	if watch or gps or quadcorder then
 		local totalminutes = time * 1440
-		local hours = math.floor(totalminutes / 60)
-		local minutes = math.floor(math.fmod(totalminutes, 60))
+		local minutes = totalminutes % 60
+		local hours = math.floor((totalminutes - minutes) / 60)
 		local twelve = orienteering.playerhuds[name].twelve
 		if twelve then
 			local ampm
