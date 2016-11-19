@@ -5,13 +5,18 @@ coordinates or the viewing angles or enabling the use of the minimap.
 
 Current version: 1.0
 
-## Dependencies
+## Mod support
+All dependencies are optional.
+
 There is an optional dependency on default from Minetest Game.
 It enables the use of crafting recipes.
 
-There is an optional dependency on Achievements [awards] by rubenwardy. If
+There is an optional dependency on Achievements [`awards`] by rubenwardy. If
 both this mod and the default mod are enabled, the achievement “Master of
 Orienteering” will be added.
+
+This mod includes item help texts for `doc_items` of the Documentation System
+modpack.
 
 ## Tools
 The orienteering tools are used automatically. To use them, you only need to
@@ -41,7 +46,7 @@ Note that in Minetest, it is also possible to access the coordinates, angles,
 etc. through the debug menu, but this would be generally considered cheating as
 this defeats the purpose of this mod. Try to resist this urge.
 
-To avoid accidentally enabling debug display with a keypress, you can add the
+To avoid accidentally enabling debug display with a key press, you can add the
 following line into your `minetest.conf`:
 
     keymap_toggle_debug = 
