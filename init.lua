@@ -253,6 +253,7 @@ function orienteering.init_hud(player)
 end
 
 function orienteering.update_hud_displays(player)
+	local toDegrees=180/math.pi
 	local name = player:get_player_name()
 	local gps, altimeter, triangulator, compass, sextant, watch, speedometer, quadcorder
 
@@ -282,7 +283,7 @@ function orienteering.update_hud_displays(player)
 	end
 
 	local str_pos, str_angles, str_time, str_speed
-	local pos = vector.apply(player:getpos(), math.floor)
+	local pos = vector.round(player:getpos())
 	if (altimeter and triangulator) or gps or quadcorder then
 		str_pos = string.format(S("Coordinates: X=%d, Y=%d, Z=%d"), pos.x, pos.y, pos.z)
 	elseif altimeter then
@@ -293,8 +294,8 @@ function orienteering.update_hud_displays(player)
 		str_pos = ""
 	end
 
-	local yaw = (player:get_look_yaw()-math.pi*0.5)/(2*math.pi)*360
-	local pitch = player:get_look_pitch()/math.pi*180
+	local yaw = (player:get_look_yaw()-math.pi/2)*toDegrees
+	local pitch = player:get_look_pitch()*toDegrees
 	if ((compass or gps) and sextant) or quadcorder then
 		str_angles = string.format(S("Yaw: %.1f°, pitch: %.1f°"), yaw, pitch)
 	elseif compass or gps then
