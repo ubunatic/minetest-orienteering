@@ -2,7 +2,7 @@ local S
 if (minetest.get_modpath("intllib")) then
 	S = intllib.Getter()
 else
-	S = function ( s ) return s end
+	S = function(s,a,...)a={a,...}return s:gsub("@(%d+)",function(n)return a[tonumber(n)]end)end
 end
 
 local orienteering = {}
@@ -285,11 +285,11 @@ function orienteering.update_hud_displays(player)
 	local str_pos, str_angles, str_time, str_speed
 	local pos = vector.round(player:getpos())
 	if (altimeter and triangulator) or gps or quadcorder then
-		str_pos = string.format(S("Coordinates: X=%d, Y=%d, Z=%d"), pos.x, pos.y, pos.z)
+		str_pos = S("Coordinates: X=@1, Y=@2, Z=@3", pos.x, pos.y, pos.z)
 	elseif altimeter then
-		str_pos = string.format(S("Height: Y=%d"), pos.y)
+		str_pos = S("Height: Y=@1", pos.y)
 	elseif triangulator then
-		str_pos = string.format(S("Coordinates: X=%d, Z=%d"), pos.x, pos.z)
+		str_pos = S("Coordinates: X=@1, Z=@2", pos.x, pos.z)
 	else
 		str_pos = ""
 	end
@@ -297,11 +297,11 @@ function orienteering.update_hud_displays(player)
 	local yaw = (player:get_look_yaw()-math.pi/2)*toDegrees
 	local pitch = player:get_look_pitch()*toDegrees
 	if ((compass or gps) and sextant) or quadcorder then
-		str_angles = string.format(S("Yaw: %.1f°, pitch: %.1f°"), yaw, pitch)
+		str_angles = S("Yaw: @1°, pitch: @2°", string.format("%.1f", yaw), string.format("%.1f", pitch))
 	elseif compass or gps then
-		str_angles = string.format(S("Yaw: %.1f°"), yaw)
+		str_angles = S("Yaw: @1°", string.format("%.1f", yaw))
 	elseif sextant then
-		str_angles = string.format(S("Pitch: %.1f°"), pitch)
+		str_angles = S("Pitch: @1°", string.format("%.1f", pitch))
 	else
 		str_angles = ""
 	end
@@ -313,19 +313,21 @@ function orienteering.update_hud_displays(player)
 		local hours = math.floor((totalminutes - minutes) / 60)
 		local twelve = orienteering.playerhuds[name].twelve
 		if twelve then
-			local ampm
 			if hours == 12 and minutes == 0 then
 				str_time = S("Time: noon")
 			elseif hours == 0 and minutes == 0 then
 				str_time = S("Time: midnight")
 			else
-				if hours >= 12 then ampm = S("p.m.") else ampm = S("a.m.") end
 				hours = math.fmod(hours, 12)
 				if hours == 0 then hours = 12 end
-				str_time = string.format(S("Time: %i:%02i %s"), hours, minutes, ampm)
+				if hours >= 12 then
+					str_time = S("Time: @1:@2 p.m.", string.format("%i", hours), string.format("%02i", minutes))
+				else
+					str_time = S("Time: @1:@2 a.m.", string.format("%i", hours), string.format("%02i", minutes))
+				end
 			end
 		else
-			str_time = string.format(S("Time: %02i:%02i"), hours, minutes)
+			str_time = S("Time: @1:@2", string.format("%02i", hours), string.format("%02i", minutes))
 		end
 	else
 		str_time = ""
@@ -345,7 +347,7 @@ function orienteering.update_hud_displays(player)
 
 	if speedometer or quadcorder then
 		local u = orienteering.settings.speed_unit
-		str_speed = string.format(S("Speed: hor.: %.1f %s, vert.: %.1f %s"), speed_hor, u, speed_ver, u)
+		str_speed = S("Speed: hor.: @1 @2, vert.: @3 @4", string.format("%.1f", speed_hor), u, string.format("%.1f", speed_ver), u)
 	else
 		str_speed = ""
 	end

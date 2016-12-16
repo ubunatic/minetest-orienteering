@@ -9,25 +9,24 @@ Automapper = Autokartierer
 GPS device = GPS-Gerät
 Binoculars = Fernglas
 
-Yaw: %.1f°, pitch: %.1f° = Gier: %.1f°, Nick: %.1f°
-Yaw: %.1f° = Gier: %.1f°
-Pitch: %.1f° = Nick: %.1f°
+Yaw: @1°, pitch: @2° = Gier: @1°, Nick: @2°
+Yaw: @1° = Gier: @1°
+Pitch: @1° = Nick: @1°
 
 Time: noon = Uhrzeit: Mittag
 Time: midnight = Uhrzeit: Mitternacht
-p.m. = PM
-a.m. = AM
-Time: %i:%02i %s = Uhrzeit: %i:%02i %s
-Time: %02i:%02i = Uhrzeit: %02i:%02i
+Time: @1:@2 a.m. = Uhrzeit: @1:@2 AM
+Time: @1:@2 p.m. = Uhrzeit: @1:@2 PM
+Time: @1:@2 = Uhrzeit: @1:@2
 
-Speed: hor.: %.1f %s, vert.: %.1f %s = Tempo: hor.: %.1f %s, vert.: %.1f %s
+Speed: hor.: @1 @2, vert.: @3 @4 = Tempo: hor.: @1 @2, vert.: @3 @4
 
 m = m
 m/s = m/s
 
-Coordinates: X\=%d, Y\=%d, Z\=%d = Koordinaten: X\=%d, Y\=%d, Z\=%d
-Height: Y\=%d = Höhe: Y\=%d
-Coordinates: X\=%d, Z\=%d = Koordinaten: X\=%d, Z\=%d
+Coordinates: X\=@1, Y\=@2, Z\=@3 = Koordinaten: X\=@1, Y\=@2, Z\=@3
+Height: Y\=@1 = Höhe: Y\=@1
+Coordinates: X\=@1, Z\=@2 = Koordinaten: X\=@1, Z\=@2
 
 Master of Orienteering = Meister der Orientierung
 Craft a quadcorder. = Fertigen Sie einen Vierkorder.

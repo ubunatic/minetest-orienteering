@@ -11,34 +11,33 @@ GPS device
 Binoculars
 
 # Coordinates
-Coordinates: X\=%d, Y\=%d, Z\=%d
-Height: Y\=%d
-Coordinates: X\=%d, Z\=%d
+Coordinates: X\=@1, Y\=@2, Z\=@3
+Height: Y\=@1
+Coordinates: X\=@1, Z\=@2
 
 # Angles
-Yaw: %.1f°, pitch: %.1f°
-Yaw: %.1f°
-Pitch: %.1f°
+Yaw: @1°, pitch: @1°
+Yaw: @1°
+Pitch: @1°
 
 # Time
 ## For the 12h mode
 Time: noon
 Time: midnight
-p.m.
-a.m.
-# 12h format Format: hours:minutes a.m/p.m
-Time: %i:%02i %s
+# 12h format
+Time: @1:@2 a.m
+Time: @1:@2 p.m
 # 24h Format: hours:minutes
-Time: %02i:%02i
+Time: @1:@2
 
 # meters
 m
 # meters per second
 m/s
 
-# %.1f will be replaced by number, %s will be replaced by speed unit
+# @1 and @3 will be replaced by number, @2 and @4 will be replaced by speed units
 # "hor." = "horizontal"; "vert." = "vertical"
-Speed: hor.: %.1f %s, vert.: %.1f %s
+Speed: hor.: @1 @2, vert.: @3 @4
 
 # awards
 Master of Orienteering
