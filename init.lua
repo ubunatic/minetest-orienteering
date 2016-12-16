@@ -333,19 +333,22 @@ function orienteering.update_hud_displays(player)
 		str_time = ""
 	end
 
-	local speed_hor, speed_ver
-	local v
-	local attach = player:get_attach()
-	if attach == nil then
-		v = player:get_player_velocity()
-	else
-		v = attach:getvelocity()
-	end
-	speed_ver = v.y
-	v.y = 0
-	speed_hor = vector.length(v)
-
 	if speedometer or quadcorder then
+		local speed_hor, speed_ver
+		local v
+		local attach = player:get_attach()
+		if attach == nil then
+			v = player:get_player_velocity()
+		else
+			v = attach:getvelocity()
+			if not v then
+				v = player:get_player_velocity()
+			end
+		end
+		speed_ver = v.y
+		v.y = 0
+		speed_hor = vector.length(v)
+
 		local u = orienteering.settings.speed_unit
 		str_speed = S("Speed: hor.: @1 @2, vert.: @3 @4", string.format("%.1f", speed_hor), u, string.format("%.1f", speed_ver), u)
 	else
