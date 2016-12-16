@@ -311,6 +311,7 @@ function orienteering.update_hud_displays(player)
 		local totalminutes = time * 1440
 		local minutes = totalminutes % 60
 		local hours = math.floor((totalminutes - minutes) / 60)
+		minutes = math.floor(minutes)
 		local twelve = orienteering.playerhuds[name].twelve
 		if twelve then
 			if hours == 12 and minutes == 0 then
