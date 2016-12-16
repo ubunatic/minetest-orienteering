@@ -319,12 +319,12 @@ function orienteering.update_hud_displays(player)
 			elseif hours == 0 and minutes == 0 then
 				str_time = S("Time: midnight")
 			else
-				hours = math.fmod(hours, 12)
-				if hours == 0 then hours = 12 end
+				local hours12 = math.fmod(hours, 12)
+				if hours12 == 0 then hours12 = 12 end
 				if hours >= 12 then
-					str_time = S("Time: @1:@2 p.m.", string.format("%i", hours), string.format("%02i", minutes))
+					str_time = S("Time: @1:@2 p.m.", string.format("%i", hours12), string.format("%02i", minutes))
 				else
-					str_time = S("Time: @1:@2 a.m.", string.format("%i", hours), string.format("%02i", minutes))
+					str_time = S("Time: @1:@2 a.m.", string.format("%i", hours12), string.format("%02i", minutes))
 				end
 			end
 		else
