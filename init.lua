@@ -294,8 +294,8 @@ function orienteering.update_hud_displays(player)
 		str_pos = ""
 	end
 
-	local yaw = (player:get_look_yaw()-math.pi/2)*toDegrees
-	local pitch = player:get_look_pitch()*toDegrees
+	local yaw = player:get_look_horizontal()*toDegrees
+	local pitch = player:get_look_vertical()*toDegrees
 	if ((compass or gps) and sextant) or quadcorder then
 		str_angles = S("Yaw: @1°, pitch: @2°", string.format("%.1f", yaw), string.format("%.1f", pitch))
 	elseif compass or gps then
