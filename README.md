@@ -56,13 +56,14 @@ The text position can be configured by using Minetest's settings system. See
 the advanced settings menu for more information.
 
 ## Crafting recipes
-Crafting recipes are only available when the default mod is used.
+Crafting recipes are only available when the default mod (from Minetest Game) is used.
 
 Symbols:
 
 * S = Steel Ingot
 * C = Copper Ingot
 * B = Bronze Ingot
+* T = Tin Ingot
 * G = Gold Ingot
 * M = Mese Crystal
 * D = Diamond
@@ -91,9 +92,9 @@ Symbols:
 
 ### Compass
 
-     C
-    CsC
-     C
+     T
+    TsT
+     T
 
 ### Sextant
 
@@ -120,7 +121,7 @@ Symbols:
 
     G2G
     3B5
-    S1S
+    T1T
 
 ### Quadcorder
 
