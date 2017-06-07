@@ -149,23 +149,23 @@ if minetest.get_modpath("default") ~= nil then
 	minetest.register_craft({
 		output = "orienteering:triangulator",
 		recipe = {
-			{"", "default:bronze_ingot", ""}, 
-			{"default:bronze_ingot", "", "default:bronze_ingot"}, 
+			{"", "default:bronze_ingot", ""},
+			{"default:bronze_ingot", "", "default:bronze_ingot"},
 		}
 	})
 	minetest.register_craft({
 		output = "orienteering:sextant",
 		recipe = {
-			{"", "default:gold_ingot", ""}, 
-			{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"}, 
+			{"", "default:gold_ingot", ""},
+			{"default:gold_ingot", "default:gold_ingot", "default:gold_ingot"},
 		}
 	})
 	minetest.register_craft({
 		output = "orienteering:compass",
 		recipe = {
-			{"", "default:copper_ingot", ""}, 
-			{"default:copper_ingot", "group:stick", "default:copper_ingot"}, 
-			{"", "default:copper_ingot", ""}, 
+			{"", "default:tin_ingot", ""},
+			{"default:tin_ingot", "group:stick", "default:tin_ingot"},
+			{"", "default:tin_ingot", ""},
 		}
 	})
 	minetest.register_craft({
@@ -189,7 +189,7 @@ if minetest.get_modpath("default") ~= nil then
 		recipe = {
 			{ "default:gold_ingot", "orienteering:triangulator", "default:gold_ingot" },
 			{ "orienteering:compass", "default:bronze_ingot", "orienteering:watch" },
-                        { "default:steel_ingot", "orienteering:altimeter", "default:steel_ingot" }
+                        { "default:tin_ingot", "orienteering:altimeter", "default:tin_ingot" }
 		}
 	})
 	minetest.register_craft({
