@@ -35,11 +35,13 @@ local o_lines = 4 -- Number of lines in HUD
 
 -- Helper function to switch between 12h and 24 mode for the time
 function orienteering.toggle_time_mode(itemstack, user, pointed_thing)
-	local name = user:get_player_name()
-	if orienteering.playerhuds[name].twelve then
-		orienteering.playerhuds[name].twelve = false
+	--[[ Player attribute “orienteering:twelve”:
+	* "true": Use 12h mode for time
+	* "false" or unset: Use 24h mode for time ]]
+	if user:get_attribute("orienteering:twelve") == "true" then
+		user:set_attribute("orienteering:twelve", "false")
 	else
-		orienteering.playerhuds[name].twelve = true
+		user:set_attribute("orienteering:twelve", "true")
 	end
 	orienteering.update_hud_displays(user)
 end
@@ -249,7 +251,6 @@ function orienteering.init_hud(player)
 			scale= { x = 100, y = 20 },
 		})
 	end
-	orienteering.playerhuds[name].twelve = false
 end
 
 function orienteering.update_hud_displays(player)
@@ -312,7 +313,7 @@ function orienteering.update_hud_displays(player)
 		local minutes = totalminutes % 60
 		local hours = math.floor((totalminutes - minutes) / 60)
 		minutes = math.floor(minutes)
-		local twelve = orienteering.playerhuds[name].twelve
+		local twelve = player:get_attribute("orienteering:twelve") == "true"
 		if twelve then
 			if hours == 12 and minutes == 0 then
 				str_time = S("Time: noon")
