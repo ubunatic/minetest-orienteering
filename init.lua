@@ -14,15 +14,15 @@ orienteering.settings.hud_pos = { x = 0.5, y = 0 }
 orienteering.settings.hud_offset = { x = 0, y = 15 }
 orienteering.settings.hud_alignment = { x = 0, y = 0 }
 
-local set = tonumber(minetest.setting_get("orienteering_hud_pos_x"))
+local set = tonumber(minetest.settings:get("orienteering_hud_pos_x"))
 if set then orienteering.settings.hud_pos.x = set end
-set = tonumber(minetest.setting_get("orienteering_hud_pos_y"))
+set = tonumber(minetest.settings:get("orienteering_hud_pos_y"))
 if set then orienteering.settings.hud_pos.y = set end
-set = tonumber(minetest.setting_get("orienteering_hud_offset_x"))
+set = tonumber(minetest.settings:get("orienteering_hud_offset_x"))
 if set then orienteering.settings.hud_offset.x = set end
-set = tonumber(minetest.setting_get("orienteering_hud_offset_y"))
+set = tonumber(minetest.settings:get("orienteering_hud_offset_y"))
 if set then orienteering.settings.hud_offset.y = set end
-set = minetest.setting_get("orienteering_hud_alignment")
+set = minetest.settings:get("orienteering_hud_alignment")
 if set == "left" then
 	orienteering.settings.hud_alignment.x = 1
 elseif set == "center" then
