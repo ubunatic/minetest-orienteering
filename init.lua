@@ -213,10 +213,14 @@ if minetest.get_modpath("default") ~= nil then
 
 end
 
-
+-- Replace Minetest Game's mapping kit
+if minetest.get_modpath("map") then
+	minetest.unregister_item("map:mapping_kit")
+	minetest.register_alias("map:mapping_kit", "orienteering:automapper")
+end
 
 function orienteering.update_automapper(player)
-	if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") then
+	if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
 		player:hud_set_flags({minimap = true})
 	else
 		player:hud_set_flags({minimap = false})
