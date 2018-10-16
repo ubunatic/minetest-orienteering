@@ -56,6 +56,7 @@ minetest.register_tool("orienteering:altimeter", {
 	_doc_items_usagehelp = use,
 	wield_image = "orienteering_altimeter.png",
 	inventory_image = "orienteering_altimeter.png",
+	groups = { disable_repair = 1 },
 })
 
 -- Displays X and Z coordinates
@@ -65,6 +66,7 @@ minetest.register_tool("orienteering:triangulator", {
 	_doc_items_usagehelp = use,
 	wield_image = "orienteering_triangulator.png",
 	inventory_image = "orienteering_triangulator.png",
+	groups = { disable_repair = 1 },
 })
 
 -- Displays player yaw
@@ -75,6 +77,7 @@ minetest.register_tool("orienteering:compass", {
 	_doc_items_usagehelp = use,
 	wield_image = "orienteering_compass_wield.png",
 	inventory_image = "orienteering_compass_inv.png",
+	groups = { disable_repair = 1 },
 })
 
 -- Displays player pitch
@@ -85,6 +88,7 @@ minetest.register_tool("orienteering:sextant", {
 	_doc_items_usagehelp = use,
 	wield_image = "orienteering_sextant_wield.png",
 	inventory_image = "orienteering_sextant_inv.png",
+	groups = { disable_repair = 1 },
 })
 
 -- Ultimate orienteering tool: Displays X,Y,Z, yaw, pitch, time, speed and enables the minimap
@@ -95,6 +99,7 @@ minetest.register_tool("orienteering:quadcorder", {
 	_doc_items_usagehelp = use_time,
 	wield_scale = { x=1, y=1, z=3.5 },
 	inventory_image = "orienteering_quadcorder.png",
+	groups = { disable_repair = 1 },
 	on_use = orienteering.toggle_time_mode,
 })
 
@@ -105,6 +110,7 @@ minetest.register_tool("orienteering:watch", {
 	_doc_items_usagehelp = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display."),
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
+	groups = { disable_repair = 1 },
 	on_use = orienteering.toggle_time_mode,
 })
 
@@ -115,6 +121,7 @@ minetest.register_tool("orienteering:speedometer", {
 	_doc_items_usagehelp = use,
 	wield_image = "orienteering_speedometer_wield.png",
 	inventory_image = "orienteering_speedometer_inv.png",
+	groups = { disable_repair = 1 },
 })
 
 -- Enables minimap
@@ -125,6 +132,7 @@ minetest.register_tool("orienteering:automapper", {
 	wield_image = "orienteering_automapper_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_automapper_inv.png",
+	groups = { disable_repair = 1 },
 })
 
 -- Displays X,Y,Z coordinates, yaw and game time
@@ -135,6 +143,7 @@ minetest.register_tool("orienteering:gps", {
 	wield_image = "orienteering_gps_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_gps_inv.png",
+	groups = { disable_repair = 1 },
 	on_use = orienteering.toggle_time_mode,
 })
 
