@@ -43,7 +43,7 @@ function orienteering.toggle_time_mode(itemstack, user, pointed_thing)
 end
 
 local use = S("Put this tool in your hotbar to see the data it provides.")
-local use_time = S("Put this tool in your hotbar to make use of its functionality. Leftclick to toggle between 24-hour and 12-hour display for the time feature.")
+local use_time = S("Put this tool in your hotbar to make use of its functionality. Punch to toggle between 24-hour and 12-hour display for the time feature.")
 
 -- Displays height (Y)
 minetest.register_tool("orienteering:altimeter", {
@@ -103,7 +103,7 @@ minetest.register_tool("orienteering:quadcorder", {
 minetest.register_tool("orienteering:watch", {
 	description = S("Watch"),
 	_doc_items_longdesc = S("It shows you the current time."),
-	_doc_items_usagehelp = S("Put the watch in your hotbar to see the time. Leftclick to toggle between the 24-hour and 12-hour display."),
+	_doc_items_usagehelp = S("Put the watch in your hotbar to see the time. Punch to toggle between the 24-hour and 12-hour display."),
 	wield_image = "orienteering_watch.png",
 	inventory_image = "orienteering_watch.png",
 	groups = { disable_repair = 1 },
