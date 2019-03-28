@@ -321,7 +321,7 @@ function orienteering.update_hud_displays(player)
 	end
 
 	local str_pos, str_angles, str_time, str_speed
-	local pos = vector.round(player:getpos())
+	local pos = vector.round(player:get_pos())
 	if (altimeter and triangulator) or gps or quadcorder then
 		str_pos = S("Coordinates: X=@1, Y=@2, Z=@3", pos.x, pos.y, pos.z)
 	elseif altimeter then
@@ -379,7 +379,7 @@ function orienteering.update_hud_displays(player)
 		if attach == nil then
 			v = player:get_player_velocity()
 		else
-			v = attach:getvelocity()
+			v = attach:get_velocity()
 			if not v then
 				v = player:get_player_velocity()
 			end
