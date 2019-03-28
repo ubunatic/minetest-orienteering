@@ -62,5 +62,5 @@ Crafting recipes are only available when the default mod (from Minetest Game) is
 Use a crafting guide to see crafting recipes.
 
 ## License
-Everything is licensed under WTFPL.
+Everything is licensed under MIT License.
 
