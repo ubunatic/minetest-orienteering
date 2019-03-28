@@ -70,6 +70,8 @@ Symbols:
 * O = Obsidian Shard
 * s = Stick
 * g = Glass
+* p = Paper
+* b = Black Dye
 * 1 = Altimeter
 * 2 = Triangulator
 * 3 = Compass
@@ -108,11 +110,19 @@ Symbols:
     C
 
 ### Speedometer
+
      G
     SsS
      S
 
+### Map
+
+    ppp
+    pbp
+    ppp
+
 ### Automapper
+
     GGG
     MOM
     GGG

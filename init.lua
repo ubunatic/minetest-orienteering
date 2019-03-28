@@ -1,4 +1,5 @@
 local S = minetest.get_translator("orienteering")
+local mod_map = minetest.get_modpath("map")
 
 local orienteering = {}
 orienteering.playerhuds = {}
@@ -119,11 +120,24 @@ minetest.register_tool("orienteering:speedometer", {
 	groups = { disable_repair = 1 },
 })
 
--- Enables minimap
+if not mod_map then
+	-- Enables minimap (surface)
+	minetest.register_tool("orienteering:map", {
+		description = S("Map"),
+		_doc_items_longdesc = S("The map allows you to view a minimap of the area around you."),
+		_doc_items_usagehelp = S("If you put a map in your hotbar, you will be able to access the minimap (only surface mode). By default, the minimap can be opened with [F7]."),
+		wield_image = "orienteering_map.png",
+		wield_scale = { x=1.5, y=1.5, z=0.15 },
+		inventory_image = "orienteering_map.png",
+		groups = { disable_repair = 1 },
+	})
+end
+
+-- Enables minimap (radar)
 minetest.register_tool("orienteering:automapper", {
 	description = S("Automapper"),
-	_doc_items_longdesc = S("The automapper automatically creates a map of the area around you and enables you to view a minimap of your surroundings. It also has a built-in radar."),
-	_doc_items_usagehelp = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default the minimap can be opened with [F7]."),
+	_doc_items_longdesc = S("The automapper is a device that combines a map with a radar. It unlocks both the surface mode and radar mode of the minimap."),
+	_doc_items_usagehelp = S("If you put an automapper in your hotbar, you will be able to access the minimap. By default, the minimap can be opened with [F7]."),
 	wield_image = "orienteering_automapper_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_automapper_inv.png",
@@ -215,19 +229,34 @@ if minetest.get_modpath("default") ~= nil then
 		}
 	})
 
-end
+	if (not mod_map) and minetest.get_modpath("dye") then
+		minetest.register_craft({
+			output = "orienteering:map",
+			recipe = {
+				{ "default:paper", "default:paper", "default:paper" },
+				{ "default:paper", "dye:black", "default:paper" },
+				{ "default:paper", "default:paper", "default:paper" },
+			}
+		})
+	end
 
--- Replace Minetest Game's mapping kit
-if minetest.get_modpath("map") then
-	minetest.unregister_item("map:mapping_kit")
-	minetest.register_alias("map:mapping_kit", "orienteering:automapper")
 end
 
 function orienteering.update_automapper(player)
-	if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
-		player:hud_set_flags({minimap = true})
+	if mod_map then
+		if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
+			player:hud_set_flags({minimap_radar = true})
+		else
+			player:hud_set_flags({minimap_radar = false})
+		end
 	else
-		player:hud_set_flags({minimap = false})
+		if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
+			player:hud_set_flags({minimap = true, minimap_radar = true})
+		elseif orienteering.tool_active(player, "orienteering:map") then
+			player:hud_set_flags({minimap = true, minimap_radar = false})
+		else
+			player:hud_set_flags({minimap = false, minimap_radar = false})
+		end
 	end
 end
 
