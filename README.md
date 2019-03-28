@@ -79,7 +79,7 @@ Symbols:
 * 4 = Sextant
 * 5 = Watch
 * 6 = Speedometer
-* 7 = Automapper
+* 7 = Radar Mapper
 * 8 = GPS device
 
 ### Altimeter
@@ -122,7 +122,7 @@ Symbols:
     pbp
     ppp
 
-### Automapper
+### Radar Mapper
 
     GGG
     MOM
