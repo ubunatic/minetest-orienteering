@@ -125,7 +125,7 @@ if not mod_map then
 	minetest.register_tool("orienteering:map", {
 		description = S("Map"),
 		_doc_items_longdesc = S("The map allows you to view a minimap of the area around you."),
-		_doc_items_usagehelp = S("If you put a map in your hotbar, you will be able to access the minimap (only surface mode). By default, the minimap can be opened with [F7]."),
+		_doc_items_usagehelp = S("If you put a map in your hotbar, you will be able to access the minimap (only surface mode). Press the “minimap” key to view the minimap."),
 		wield_image = "orienteering_map.png",
 		wield_scale = { x=1.5, y=1.5, z=0.15 },
 		inventory_image = "orienteering_map.png",
@@ -137,7 +137,7 @@ end
 minetest.register_tool("orienteering:automapper", {
 	description = S("Radar Mapper"),
 	_doc_items_longdesc = S("The radar mapper is a device that combines a map with a radar. It unlocks both the surface mode and radar mode of the minimap."),
-	_doc_items_usagehelp = S("If you put a radar mapper in your hotbar, you will be able to access the minimap. By default, the minimap can be opened with [F7]."),
+	_doc_items_usagehelp = S("If you put a radar mapper in your hotbar, you will be able to access the minimap. Press the “minimap” key to view the minimap."),
 	wield_image = "orienteering_automapper_wield.png",
 	wield_scale = { x=1, y=1, z=2 },
 	inventory_image = "orienteering_automapper_inv.png",

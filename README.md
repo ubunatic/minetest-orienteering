@@ -32,7 +32,7 @@ The following tools are available:
 * Sextant: Shows pitch (vertical angle)
 * Watch: Shows the time (hours and minutes)
 * Speedometer: Shows speed in m/s (1 m = side length of a single cube)
-* Map: Enables usage of the minimap (F7 key by default) (only surface mode)
+* Map: Enables usage of the minimap (only surface mode)
 * Radar Mapper: Enables the usage of the minimap (surface and radar mode)
 * GPS device: Shows X, Y, Z coordinates, yaw and time
 * Quadcorder: Combination of everything above: Shows X, Y, Z coordinates, pitch,

@@ -61,6 +61,6 @@ Put the watch in your hotbar to see the time. Punch to toggle between the 24-hou
 Put this tool in your hotbar to make use of its functionality. Punch to toggle between 24-hour and 12-hour display for the time feature.=
 
 The radar mapper is a device that combines a map with a radar. It unlocks both the surface mode and radar mode of the minimap.=
-If you put a radar mapper in your hotbar, you will be able to access the minimap. By default, the minimap can be opened with [F7].=
+If you put a radar mapper in your hotbar, you will be able to access the minimap. Press the “minimap” key to view the minimap.=
 The map allows you to view a minimap of the area around you.=
-If you put a map in your hotbar, you will be able to access the minimap (only surface mode). By default, the minimap can be opened with [F7].=
+If you put a map in your hotbar, you will be able to access the minimap (only surface mode). Press the “minimap” key to view the minimap.=
