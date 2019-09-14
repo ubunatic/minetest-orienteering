@@ -3,7 +3,7 @@ This mod adds several tools which mostly aid in orientation. When carrying them,
 this will enhance the HUD by adding several interesting information such as the
 coordinates or the viewing angles or enabling the use of the minimap.
 
-Current version: 1.4
+Current version: 1.5
 
 ## Mod support
 All dependencies are optional.
@@ -37,6 +37,9 @@ The following tools are available:
 * GPS device: Shows X, Y, Z coordinates, yaw and time
 * Quadcorder: Combination of everything above: Shows X, Y, Z coordinates, pitch,
   yaw, time, speed and enables minimap/radar
+
+Note: The map will only be available if the game does not include the “map” mod
+(found in Minetest Game), which already includes a mapping kit item.
 
 To toggle between 12h and 24h mode for the displayed time, wield any device
 which is capable of displaying the time and press the left mouse button.
