@@ -1,5 +1,5 @@
 local S = minetest.get_translator("orienteering")
-local mod_map = minetest.get_modpath("map")
+local mod_map = minetest.get_modpath("map") -- map mod from Minetest Game
 
 local orienteering = {}
 orienteering.playerhuds = {}
@@ -243,20 +243,12 @@ if minetest.get_modpath("default") ~= nil then
 end
 
 function orienteering.update_automapper(player)
-	if mod_map then
-		if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
-			player:hud_set_flags({minimap_radar = true})
-		else
-			player:hud_set_flags({minimap_radar = false})
-		end
+	if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
+		player:hud_set_flags({minimap = true, minimap_radar = true})
+	elseif ((not mod_map) and orienteering.tool_active(player, "orienteering:map")) or ((mod_map) and orienteering.tool_active(player, "map:mapping_kit")) then
+		player:hud_set_flags({minimap = true, minimap_radar = false})
 	else
-		if orienteering.tool_active(player, "orienteering:automapper") or orienteering.tool_active(player, "orienteering:quadcorder") or minetest.settings:get_bool("creative_mode") then
-			player:hud_set_flags({minimap = true, minimap_radar = true})
-		elseif orienteering.tool_active(player, "orienteering:map") then
-			player:hud_set_flags({minimap = true, minimap_radar = false})
-		else
-			player:hud_set_flags({minimap = false, minimap_radar = false})
-		end
+		player:hud_set_flags({minimap = false, minimap_radar = false})
 	end
 end
 
@@ -264,6 +256,10 @@ end
 function orienteering.tool_active(player, item)
 	-- Requirement: player carries the tool in the hotbar
 	local inv = player:get_inventory()
+	-- Exception: MTG's Mapping Kit can be anywhere
+	if item == "map:mapping_kit" then
+		return inv:contains_item("main", item)
+	end
 	local hotbar = player:hud_get_hotbar_itemcount()
 	for i=1, hotbar do
 		if inv:get_stack("main", i):get_name() == item then
@@ -406,6 +402,12 @@ function orienteering.update_hud_displays(player)
 	for l=line, o_lines do
 		player:hud_change(orienteering.playerhuds[name]["o_line"..l], "text", "")
 	end
+end
+
+if mod_map then
+	-- Disable all HUD flag handling in map mod because we already handle it
+	-- ourselves.
+	map.update_hud_flags = function() end
 end
 
 minetest.register_on_newplayer(orienteering.init_hud)
